@@ -1,0 +1,91 @@
+/* Base Styles using Tailwind @apply equivalent where possible, or raw CSS */
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* -----------------------------------------------------------
+   Background Blob Animations (Ported from AnimatedBackground.jsx)
+   ----------------------------------------------------------- */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(64px);
+    /* blur-3xl equivalent roughly */
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.blob-1 {
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    background-color: rgba(0, 255, 153, 0.05);
+    /* accent/5 */
+    animation: blobMove1 20s infinite ease-in-out;
+}
+
+.blob-2 {
+    bottom: 0;
+    right: 0;
+    width: 600px;
+    height: 600px;
+    background-color: rgba(0, 204, 255, 0.05);
+    /* secondary/5 */
+    animation: blobMove2 25s infinite ease-in-out;
+}
+
+@keyframes blobMove1 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(100px, -50px) scale(1.2);
+    }
+
+    66% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes blobMove2 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(-100px, 100px) scale(1.5);
+    }
+
+    66% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+/* -----------------------------------------------------------
+   Scroll Animation Utilities
+   ----------------------------------------------------------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
