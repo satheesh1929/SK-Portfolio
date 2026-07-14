@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0f17;
+  --foreground: #f3f4f6;
+  --card: #131b2e;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --accent-primary: #00d2ff;
+  --accent-secondary: #10b981; /* AgriTech/IoT green */
+  --accent-violet: #8b5cf6;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-violet: var(--accent-violet);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070a10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* -----------------------------------------------------------
+   Background Blob Animations
+   ----------------------------------------------------------- */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob-1 {
+  top: 5%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background-color: var(--accent-primary);
+  animation: blobMove1 25s infinite ease-in-out;
+}
+
+.blob-2 {
+  bottom: 10%;
+  right: -10%;
+  width: 700px;
+  height: 700px;
+  background-color: var(--accent-violet);
+  animation: blobMove2 30s infinite ease-in-out;
+}
+
+.blob-3 {
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background-color: var(--accent-secondary);
+  animation: blobMove1 28s infinite ease-in-out reverse;
+  opacity: 0.05;
+}
+
+@keyframes blobMove1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(120px, -80px) scale(1.15);
+  }
+  66% {
+    transform: translate(-60px, 40px) scale(0.9);
+  }
+}
+
+@keyframes blobMove2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-140px, 100px) scale(1.2);
+  }
+  66% {
+    transform: translate(80px, -60px) scale(0.85);
+  }
+}
+
+/* Custom Utilities */
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.accent-gradient {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-violet) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.agri-gradient {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
